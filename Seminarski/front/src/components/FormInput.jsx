@@ -7,18 +7,10 @@ const FormInput = ({
   value,
   onChange,
   placeholder,
-  error,
   required = false,
   className = "",
   accentColor = "pink",
 }) => {
-  const focusClasses = {
-    pink: "focus:border-pink-300 focus:ring-pink-100",
-    gold: "focus:border-amber-300 focus:ring-amber-100",
-    blue: "focus:border-blue-300 focus:ring-blue-100",
-    gray: "focus:border-gray-400 focus:ring-gray-200",
-  };
-
   const starColors = {
     pink: "text-pink-500",
     gold: "text-amber-500",
@@ -50,21 +42,8 @@ const FormInput = ({
         onChange={onChange}
         placeholder={placeholder}
         required={required}
-        className={`
-            w-full px-5 py-3.5 bg-gray-50 border rounded-xl transition-all outline-none
-            ${
-              error
-                ? "border-red-400 focus:ring-4 focus:ring-red-50"
-                : `border-transparent focus:bg-white focus:ring-4 ${
-                    focusClasses[accentColor] || focusClasses.pink
-                  }`
-            }
-        `}
+        className="w-full px-5 py-3.5 bg-gray-50 border rounded-xl transition-all outline-none"
       />
-
-      {error && (
-        <p className="mt-1.5 ml-1 text-xs text-red-500 font-medium">{error}</p>
-      )}
     </div>
   );
 };

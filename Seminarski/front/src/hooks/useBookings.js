@@ -23,6 +23,10 @@ export const useBookings = () => {
     }
   };
 
+  useEffect(() => {
+    fetchBookings();
+  }, []);
+
   const fetchAvailableSlots = async (serviceId, selectedDate) => {
     if (!serviceId || !selectedDate) return;
 
@@ -30,7 +34,7 @@ export const useBookings = () => {
     setError(null);
     try {
       const response = await api.get(
-        `/rezervacije/slobodni-termini?usluga_id=${serviceId}&datum=${selectedDate}`
+        `/rezervacije/slobodni-termini?usluga_id=${serviceId}&datum=${selectedDate}`,
       );
       setTimeSlots(response.data);
     } catch (err) {
@@ -45,7 +49,7 @@ export const useBookings = () => {
     setLoading(true);
     try {
       const response = await api.get(
-        `/zaposleni/rezervacije/moj-raspored-obaveza?datum=${date}`
+        `/zaposleni/rezervacije/moj-raspored-obaveza?datum=${date}`,
       );
       setDailySchedule(response.data.data);
       setScheduleMessage(response.data.message || "");
@@ -86,10 +90,6 @@ export const useBookings = () => {
       };
     }
   };
-
-  useEffect(() => {
-    fetchBookings();
-  }, []);
 
   return {
     bookings,

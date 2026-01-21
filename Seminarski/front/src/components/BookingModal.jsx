@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useBookings } from "../hooks/useBookings";
 import Button from "./Button";
 
-const BookingModal = ({ service, onClose, onConfirm }) => {
+const BookingModal = ({ service, onClose }) => {
   const { fetchAvailableSlots, timeSlots, loadingSlots, bookTermin, error } =
     useBookings();
 
@@ -19,25 +19,23 @@ const BookingModal = ({ service, onClose, onConfirm }) => {
   }, [selectedDate, service.id]);
 
   const handleCompleteBooking = async () => {
-    if (selectedDate && selectedTime) {
-      setIsSubmitting(true);
-      setLocalError("");
+    setIsSubmitting(true);
+    setLocalError("");
 
-      const result = await bookTermin({
-        service_id: service.id,
-        datum: selectedDate,
-        vreme: selectedTime,
-      });
+    const result = await bookTermin({
+      service_id: service.id,
+      datum: selectedDate,
+      vreme: selectedTime,
+    });
 
-      if (result.success) {
-        alert("Rezervacija uspesno izvrsena");
+    if (result.success) {
+      alert("Rezervacija uspesno izvrsena");
 
-        onClose();
-      } else {
-        setLocalError(result.error);
-      }
-      setIsSubmitting(false);
+      onClose();
+    } else {
+      setLocalError(result.error);
     }
+    setIsSubmitting(false);
   };
 
   return (
@@ -52,7 +50,7 @@ const BookingModal = ({ service, onClose, onConfirm }) => {
               {service.naziv}
             </h2>
             <p className="text-gray-400 text-sm">
-              {service.trajanje} min • {service.cena} RSD
+              {service.trajanje} • {service.cena_raw} RSD
             </p>
           </div>
           <button
@@ -99,20 +97,21 @@ const BookingModal = ({ service, onClose, onConfirm }) => {
             ) : (
               <div className="grid grid-cols-3 sm:grid-cols-4 gap-2">
                 {timeSlots.map((slot, index) => (
-                  <button
+                  <Button
                     key={index}
+                    variant={
+                      selectedTime === slot.vreme ? "primary" : "outline"
+                    }
                     disabled={!slot.dostupno}
                     onClick={() => setSelectedTime(slot.vreme)}
                     className={`py-3 rounded-xl text-xs font-mono font-bold transition-all ${
                       selectedTime === slot.vreme
                         ? "bg-pink-900 text-white shadow-lg shadow-pink-200 scale-105"
-                        : slot.dostupno
-                          ? "bg-white border border-pink-50 text-gray-700 hover:border-pink-300"
-                          : "bg-gray-100/50 text-gray-300 cursor-not-allowed opacity-40"
+                        : "bg-white border border-pink-50 text-gray-700 hover:border-pink-300"
                     }`}
                   >
                     {slot.vreme}
-                  </button>
+                  </Button>
                 ))}
               </div>
             )}

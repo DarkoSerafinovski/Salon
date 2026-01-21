@@ -1,4 +1,3 @@
-// hooks/useAuth.js
 import { useState } from "react";
 import api from "../api";
 
@@ -9,7 +8,7 @@ export const useAuth = () => {
   const handleAuthSuccess = (response) => {
     const { access_token, type, data } = response.data;
     sessionStorage.setItem("token", access_token);
-    sessionStorage.setItem("user_type", type || data.type);
+    sessionStorage.setItem("user_type", type);
     sessionStorage.setItem("user_name", data.ime);
   };
 
@@ -18,10 +17,11 @@ export const useAuth = () => {
     setError("");
     try {
       const response = await api.post("/login", formData);
+
       handleAuthSuccess(response);
       return { success: true };
     } catch (err) {
-      setError(err.response?.data?.message || "Greška pri prijavi");
+      setError("Greška pri prijavi");
       return { success: false };
     } finally {
       setLoading(false);
@@ -80,5 +80,14 @@ export const useAuth = () => {
     name: sessionStorage.getItem("user_name"),
   });
 
-  return { login, register, logout, addEmployee, getUserData, loading, error };
+  return {
+    login,
+    register,
+    logout,
+    addEmployee,
+    getUserData,
+    loading,
+    error,
+    setError,
+  };
 };

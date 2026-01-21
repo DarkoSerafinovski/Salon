@@ -20,8 +20,8 @@ const EmployeeServicesModal = ({ employee, onClose }) => {
     const fetchData = async () => {
       setLoading(true);
 
-      const kategorijaMap = { sminkerka: "sminkanje", manikirka: "manikir" };
-      const targetKategorija = kategorijaMap[employee.uloga];
+      const targetKategorija =
+        employee.uloga === "sminkerka" ? "sminkanje" : "manikir";
 
       try {
         const [resMy, resAll] = await Promise.all([

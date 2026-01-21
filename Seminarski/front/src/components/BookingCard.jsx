@@ -5,11 +5,8 @@ const BookingCard = ({ booking, onCancel, variant = "client" }) => {
   const [isCancelling, setIsCancelling] = useState(false);
 
   const statusStyles = {
-    zakazano: "bg-blue-50 text-blue-600",
     potvrdjena: "bg-green-50 text-green-600",
-    potvrđeno: "bg-green-50 text-green-600",
     otkazano: "bg-red-50 text-red-600",
-    završeno: "bg-gray-50 text-gray-500",
   };
 
   const handleCancelClick = async () => {
@@ -17,6 +14,8 @@ const BookingCard = ({ booking, onCancel, variant = "client" }) => {
     try {
       await onCancel(booking.id);
     } catch (error) {
+      console.error(error);
+    } finally {
       setIsCancelling(false);
     }
   };
@@ -36,10 +35,8 @@ const BookingCard = ({ booking, onCancel, variant = "client" }) => {
                   {booking.usluga.naziv}
                 </h3>
                 <p className="text-gray-400 text-[11px] font-bold uppercase tracking-tight mt-1">
-                  {booking.usluga.trajanje} min •{" "}
-                  <span className="text-pink-900">
-                    {booking.usluga.cena} RSD
-                  </span>
+                  {booking.usluga.trajanje} •{" "}
+                  <span className="text-pink-900">{booking.usluga.cena}</span>
                 </p>
               </div>
             </div>
@@ -112,10 +109,10 @@ const BookingCard = ({ booking, onCancel, variant = "client" }) => {
                 Usluga
               </p>
               <p className="text-sm font-bold text-gray-800">
-                {booking.usluga.cena} RSD
+                {booking.usluga.cena}
               </p>
               <p className="text-[11px] text-gray-500">
-                {booking.usluga.trajanje} min
+                {booking.usluga.trajanje}
               </p>
             </div>
           </div>

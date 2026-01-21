@@ -42,7 +42,7 @@ const Register = ({ onRegisterSuccess }) => {
       title="Registracija"
       subtitle="Kreirajte nalog i zakažite svoj termin za uživanje"
     >
-      {error && <Alert message={error} type="error" className="mb-6" />}
+      {error && <Alert message={error} className="mb-6" />}
 
       <form onSubmit={handleSubmit} className="space-y-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

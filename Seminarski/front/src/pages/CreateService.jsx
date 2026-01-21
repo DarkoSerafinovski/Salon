@@ -51,7 +51,6 @@ const CreateService = () => {
   return (
     <div className="max-w-4xl mx-auto p-6">
       <div className="bg-white rounded-[3rem] shadow-2xl overflow-hidden border border-pink-50">
-        {/* Header */}
         <div className="bg-pink-900 p-10 text-white text-center">
           <h2 className="text-3xl font-serif mb-2">Nova Usluga</h2>
           <p className="opacity-70 italic font-light">
@@ -109,7 +108,6 @@ const CreateService = () => {
               />
             </div>
 
-            {/* Ušminkana Textarea */}
             <div className="flex flex-col">
               <label className="block text-[10px] uppercase tracking-[0.2em] font-black text-gray-400 mb-3 ml-1">
                 Opis usluge

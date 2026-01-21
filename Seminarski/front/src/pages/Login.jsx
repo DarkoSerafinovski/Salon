@@ -37,7 +37,7 @@ const Login = ({ onLoginSuccess }) => {
       title="Prijava"
       subtitle="Unesite svoje podatke za pristup panelu"
     >
-      {error && <Alert message={error} type="error" variant="message" />}
+      {error && <Alert message={error} />}
 
       <form onSubmit={handleSubmit} className="space-y-5">
         <FormInput

@@ -6,7 +6,7 @@ const EmployeeSchedule = () => {
 
   useEffect(() => {
     fetchMySchedule();
-  }, [fetchMySchedule]);
+  }, []);
 
   if (loading)
     return (

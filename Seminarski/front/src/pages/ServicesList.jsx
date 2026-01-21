@@ -62,7 +62,7 @@ const ServicesList = () => {
             <Button
               key={tab}
               onClick={() => setActiveTab(tab)}
-              variant={activeTab === tab ? "default" : "outline"}
+              variant={activeTab === tab ? "primary" : "outline"}
               className={`!rounded-xl !px-6 !py-2 !text-sm !font-bold !border-none ${
                 activeTab !== tab ? "!text-gray-400 hover:!text-pink-800" : ""
               }`}
@@ -116,7 +116,6 @@ const ServicesList = () => {
         </>
       ) : (
         <Alert
-          type="info"
           variant="panel"
           message="Nema pronađenih usluga"
           description="Pokušajte da promenite filtere pretrage."

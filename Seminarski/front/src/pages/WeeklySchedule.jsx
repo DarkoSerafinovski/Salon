@@ -6,7 +6,7 @@ const WeeklySchedule = () => {
 
   useEffect(() => {
     fetchWeeklySchedule();
-  }, [fetchWeeklySchedule]);
+  }, []);
 
   const daysOrder = [
     "Ponedeljak",

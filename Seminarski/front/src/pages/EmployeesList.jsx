@@ -50,9 +50,6 @@ const EmployeesList = () => {
               Upravljajte zaposlenima i njihovim performansama
             </p>
           </div>
-          <div className="lg:hidden">
-            <Button className="!rounded-full px-6">+ NOVI</Button>
-          </div>
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 bg-white p-6 rounded-[2.5rem] shadow-sm border border-pink-50 flex-1">

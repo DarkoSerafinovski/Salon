@@ -8,7 +8,7 @@ export const useSchedule = () => {
   const [myShifts, setMyShifts] = useState([]);
   const [selectedEmployeeSchedule, setSelectedEmployeeSchedule] = useState([]);
 
-  const fetchWeeklySchedule = useCallback(async () => {
+  const fetchWeeklySchedule = async () => {
     setLoading(true);
     setError(null);
     try {
@@ -20,9 +20,9 @@ export const useSchedule = () => {
     } finally {
       setLoading(false);
     }
-  }, []);
+  };
 
-  const fetchMySchedule = useCallback(async () => {
+  const fetchMySchedule = async () => {
     setLoading(true);
     try {
       const response = await api.get("/zaposleni/moj-raspored-smena");
@@ -32,13 +32,13 @@ export const useSchedule = () => {
     } finally {
       setLoading(false);
     }
-  }, []);
+  };
 
-  const fetchScheduleByEmployee = useCallback(async (employeeId) => {
+  const fetchScheduleByEmployee = async (employeeId) => {
     setLoading(true);
     try {
       const response = await api.get(
-        `/vlasnica/radno-vreme/raspored/${employeeId}`
+        `/vlasnica/radno-vreme/raspored/${employeeId}`,
       );
       setSelectedEmployeeSchedule(response.data.data || []);
     } catch (err) {
@@ -47,7 +47,7 @@ export const useSchedule = () => {
     } finally {
       setLoading(false);
     }
-  }, []);
+  };
 
   const assignSchedule = async (employeeId, rasporedData) => {
     setLoading(true);

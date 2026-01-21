@@ -56,7 +56,7 @@ export const useEmployees = (initialFilters) => {
   const getEmployeeServices = async (employeeId) => {
     try {
       const response = await api.get(
-        `/vlasnica/zaposleni/${employeeId}/usluge`
+        `/vlasnica/zaposleni/${employeeId}/usluge`,
       );
       return response.data.data;
     } catch (err) {

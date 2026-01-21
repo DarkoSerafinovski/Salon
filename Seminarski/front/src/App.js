@@ -4,11 +4,12 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
+
+import { useState } from "react";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import AddEmployee from "./pages/AddEmployee";
 import Navbar from "./components/NavBar";
-import { useState } from "react";
 import CreateService from "./pages/CreateService";
 import ServicesList from "./pages/ServicesList";
 import EditService from "./pages/EditService";

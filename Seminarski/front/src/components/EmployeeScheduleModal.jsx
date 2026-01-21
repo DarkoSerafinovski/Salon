@@ -11,7 +11,7 @@ const EmployeeScheduleModal = ({ employee, onClose, onAssignNew }) => {
     if (employee?.id) {
       fetchScheduleByEmployee(employee.id);
     }
-  }, [employee.id, fetchScheduleByEmployee]);
+  }, [employee.id]);
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-pink-950/20 backdrop-blur-md">
@@ -103,12 +103,9 @@ const EmployeeScheduleModal = ({ employee, onClose, onAssignNew }) => {
             DODELI NOVI RASPORED
           </Button>
 
-          <button
-            onClick={onClose}
-            className="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em] hover:text-pink-900 transition-colors py-2"
-          >
-            Zatvori prozor
-          </button>
+          <Button variant="ghost" onClick={onClose}>
+            ZATVORI PROZOR
+          </Button>
         </div>
       </div>
     </div>
