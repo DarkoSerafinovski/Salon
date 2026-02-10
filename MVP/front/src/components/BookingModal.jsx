@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useBookings } from "../hooks/useBookings";
 import Button from "./Button";
 
-const BookingModal = ({ service, onClose, onConfirm }) => {
+const BookingModal = ({ service, onClose }) => {
   const { fetchAvailableSlots, timeSlots, loadingSlots, bookTermin, error } =
     useBookings();
 
